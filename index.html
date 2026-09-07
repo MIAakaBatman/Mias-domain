@@ -90,6 +90,75 @@
 .star-8  { width: 62px; top: 120px; left: -130px; transform: rotate(-18deg); }
 .star-9  { width: 49px; bottom: -50px; right: 20px; transform: rotate(12deg); }
 .star-10 { width: 50px; top: -20px; right: -120px; transform: rotate(-8deg); }
+/* Reset body layout for natural vertical scrolling */
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Stacks sections vertically */
+  align-items: center;
+  overflow-x: hidden;
+}
+
+/* Hero section containing your card frame and scattered stars */
+.hero-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Cloud section sitting directly below the hero section */
+.cloud-section {
+  width: 100%;
+  position: relative;
+  line-height: 0; /* Prevents tiny whitespace gaps under images */
+}
+
+.cloud-overlay {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+/* Layout container for the section below clouds */
+.intro-container {
+  padding: 40px 20px 100px; /* INCREASE '100px' TO MAKE IT SCROLL FURTHER */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro-heading {
+  font-family: "Party LET Plain", "Party LET", "Brush Script MT", cursive;
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+/* Content box pairing text on left and your photo on right */
+.intro-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.intro-text {
+  font-family: sans-serif;
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Your standing photo styling */
+.profile-pic {
+  width: 220px; /* Adjust image display width */
+  height: auto;
+}
 
     h1 {
       font-family: "Party LET Plain", "Party LET", "Brush Script MT", cursive;
@@ -107,7 +176,7 @@
     }
   </style>
 </head>
-<body>
+  <body>
 
   <div class="card-container">
     <!-- 2. STAR DOODLES (IMG-0843.png) -->
@@ -126,5 +195,31 @@
     <p>~prepare to be starstruck~</p>
   </div>
 
+
+
+
+  <!-- Second Viewport: Full-Width Clouds on Scroll -->
+  <div class="cloud-section">
+    <img src="https://i.postimg.cc/YS4r6fvs/IMG-0847.png" class="cloud-overlay" alt="Clouds cover">
+  </div>
+    <div class="cloud-section">
+  <img src="YOUR_CLOUD_IMAGE_LINK.png" class="cloud-overlay" alt="Clouds cover">
+
+  <!-- Introduction Layout -->
+  <div class="intro-container">
+    <h2 class="intro-heading">INTRODUCTION</h2>
+
+    <div class="intro-content">
+      <p class="intro-text">
+        Welcome! Write your bio text or introduction details here...
+      </p>
+      
+      <!-- Your Character Photo -->
+      <img src="YOUR_PROFILE_PIC_LINK.png" class="profile-pic" alt="Mia">
+    </div>
+  </div>
+</div>
+
 </body>
+
 </html>
