@@ -36,6 +36,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      margin-top: 100px;
     }
 
     .doodle {
@@ -102,11 +103,12 @@ body {
 
 /* Hero section containing your card frame and scattered stars */
 .hero-section {
-  min-height: 100vh;
+  min-height: 200vh;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items:  flex-start ;
+  box-sizing: border-box;
 }
 
 /* Cloud section sitting directly below the hero section */
@@ -124,7 +126,7 @@ body {
 }
 /* Layout container for the section below clouds */
 .intro-container {
-  padding: 40px 20px 100px; /* INCREASE '100px' TO MAKE IT SCROLL FURTHER */
+  padding: 40px 20px 150px; /* INCREASE '100px' TO MAKE IT SCROLL FURTHER */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -140,25 +142,181 @@ body {
 /* Content box pairing text on left and your photo on right */
 .intro-content {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 30px;
-  max-width: 800px;
-  width: 100%;
+  gap: 40px;
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Keeps all text stacked neatly together on the left */
+.text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  text-align: left;
 }
 
 .intro-text {
   font-family: sans-serif;
-  color: #ffffff;
-  font-size: 1rem;
+  color: #FFE75E;
+  font-size: 1.1rem;
   line-height: 1.6;
+  margin: 0;
 }
+
+
 
 /* Your standing photo styling */
 .profile-pic {
-  width: 220px; /* Adjust image display width */
+  width: 500px; /* Adjust image display width */
   height: auto;
 }
+.intro-heading {
+  font-family: "Party LET Plain", "Party LET", "Brush Script MT", cursive;
+  font-size: 2.5rem;
+  color: #FFFC8F;
+  margin-bottom: 30px;
+
+  /* Light Blue Rounded Border */
+  display: inline-block;                 /* Wraps border tightly around text */
+  border: 2px solid #87ceeb; /* Light blue border color */
+  background-color: #87ceeb;
+  border-radius: 15px;                   /* Curved corners */
+  padding: 8px 24px;                     /* Breathing room inside border */
+  box-shadow: 0 0 12px rgba(135, 206, 235, 0.4); /* Optional subtle blue glow */
+}
+.intro-container {
+  padding: 40px 20px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.intro-container {
+  padding: 40px 20px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1; /* Keeps text and images sitting above the background */
+}
+
+/* Twinkling star layer positioned strictly behind the content */
+.intro-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Pushes stars behind text */
+
+  /* Pure CSS starfield pattern */
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.9), rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 230px 10px, #ffffff, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 250px 250px;
+
+  /* Only this background layer twinkles now */
+  animation: starTwinkle 3s ease-in-out infinite alternate;
+}
+
+/* Keyframes target only the background star opacity */
+@keyframes starTwinkle {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+/* Animated DBZ / Cosmic Aura Effect for transparent PNGs */
+.aura-glow {
+  animation: dbzAura 0.8s ease-in-out infinite alternate;
+  will-change: filter;
+}
+
+@keyframes dbzAura {
+  0% {
+    filter: 
+      drop-shadow(0 0 6px rgba(135, 206, 235, 0.8))
+      drop-shadow(0 0 15px rgba(180, 140, 255, 0.6))
+      drop-shadow(0 0 25px rgba(135, 206, 235, 0.4));
+    transform: scale(1);
+  }
+  100% {
+    filter: 
+      drop-shadow(0 0 12px rgba(135, 206, 235, 1))
+      drop-shadow(0 0 28px rgba(180, 140, 255, 0.9))
+      drop-shadow(0 0 45px rgba(255, 255, 255, 0.7));
+    transform: scale(1.015); /* Subtle energy flare expansion */
+  }
+}
+/* Container for the interactive reveal line */
+.secret-container {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+/* Hide the raw checkbox input */
+.secret-toggle {
+  display: none;
+}
+
+/* The celestial prop icon */
+.celestial-prop {
+  font-size: 7rem;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  user-select: none;
+}
+
+/* Default state: Sun */
+.celestial-prop::before {
+  content: "☀️";
+  filter: drop-shadow(0 0 8px #ffb703);
+}
+
+/* Hidden secret text state */
+.secret-fact {
+  opacity: 0;
+  transform: translateX(-15px) scale(0.9);
+  font-size: 1.8rem;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  color: #a0c4ff;
+  font-weight: bold;
+}
+
+/* --- REVEAL TRIGGER (ON CLICK / TAP) --- */
+
+/* 1. Turn Sun into glowing Moon & rotate */
+.secret-toggle:checked + .celestial-prop::before {
+  content: "🌙";
+  filter: drop-shadow(0 0 12px #e0aaff);
+}
+
+.secret-toggle:checked + .celestial-prop {
+  transform: rotate(360deg) scale(1.2);
+}
+
+/* 2. Pop the Batman fact out of nowhere! */
+.secret-toggle:checked ~ .secret-fact {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+
 
     h1 {
       font-family: "Party LET Plain", "Party LET", "Brush Script MT", cursive;
@@ -202,24 +360,36 @@ body {
   <div class="cloud-section">
     <img src="https://i.postimg.cc/YS4r6fvs/IMG-0847.png" class="cloud-overlay" alt="Clouds cover">
   </div>
-    <div class="cloud-section">
-  <img src="YOUR_CLOUD_IMAGE_LINK.png" class="cloud-overlay" alt="Clouds cover">
 
   <!-- Introduction Layout -->
   <div class="intro-container">
     <h2 class="intro-heading">INTRODUCTION</h2>
+<div class="intro-content">
 
-    <div class="intro-content">
-      <p class="intro-text">
-        Welcome! Write your bio text or introduction details here...
-      </p>
-      
-      <!-- Your Character Photo -->
-      <img src="YOUR_PROFILE_PIC_LINK.png" class="profile-pic" alt="Mia">
-    </div>
+  <!-- 1. Character Photo on the left -->
+  <img src="https://i.postimg.cc/qvVSbsDD/IMG-0845.png" class="profile-pic aura-glow" alt="Mia">
+
+  <!-- 2. Text block on the right -->
+  <div class="text-block">
+    <p class="intro-text">
+      Welcome! Woah ....<br>
+      you made it this far ....<br><br>
+      well now that u are here ... here are a few facts abt me ...<br>one of em is ...
+    </p>
+
+    <!-- Interactive Sun/Moon Batman Reveal -->
+    <label class="secret-container">
+      <input type="checkbox" class="secret-toggle">
+      <span class="celestial-prop"></span>
+      <span class="secret-fact">IM BATMAN!!! 🦇</span>
+    </label>
+
+    <p class="intro-text" style="margin-top: 10px;">
+      i bet u didnt know that
+    </p>
   </div>
+
 </div>
 
-</body>
+    
 
-</html>
