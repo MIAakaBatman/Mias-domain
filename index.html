@@ -265,10 +265,10 @@
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
       gap: 40px;
       width: 100%;
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
     }
 
@@ -279,19 +279,40 @@
       text-align: center;
     }
 
+    /* Picture frame wrapper */
+    .gallery-frame {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .gallery-frame img {
+      display: block;
+    }
+
     .gallery-image {
       width: 100%;
-      height: 300px;
+      height: 400px;
       object-fit: cover;
       border: 3px solid #d4c5ba;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .gallery-image:hover {
       transform: scale(1.02);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Border frame image */
+    .frame-border {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
     }
 
     .gallery-title {
@@ -332,6 +353,7 @@
       .card-container { width: 90%; height: auto; padding: 50px 30px; }
       .gallery-grid { grid-template-columns: 1fr; }
       .gallery-heading { font-size: 2.2rem; }
+      .gallery-image { height: 300px; }
     }
   </style>
 </head>
@@ -402,7 +424,11 @@
 
     <div class="gallery-grid">
       <div class="gallery-item">
-        <img src="https://i.postimg.cc/NFyrxG4d/IMG-0195.jpg" class="gallery-image" alt="Forest and Water landscape">
+        <div class="gallery-frame">
+          <img src="https://i.postimg.cc/NFyrxG4d/IMG-0195.jpg" class="gallery-image" alt="Forest and Water landscape">
+          <!-- PASTE YOUR BORDER IMAGE URL HERE -->
+          <img src="" class="frame-border" alt="">
+        </div>
         <h3 class="gallery-title">IF I DROWN...</h3>
         <p class="gallery-description">
           BY MIA DA VINCI
@@ -410,7 +436,11 @@
       </div>
 
       <div class="gallery-item">
-        <img src="https://i.postimg.cc/dQz9SgyD/IMG-0152.jpg" class="gallery-image" alt="Fantasy castle with ornate bridge">
+        <div class="gallery-frame">
+          <img src="https://i.postimg.cc/dQz9SgyD/IMG-0152.jpg" class="gallery-image" alt="Fantasy castle with ornate bridge">
+          <!-- PASTE YOUR BORDER IMAGE URL HERE -->
+          <img src="" class="frame-border" alt="">
+        </div>
         <h3 class="gallery-title"> BRIDGE TO JUMP FROM </h3>
         <p class="gallery-description">
           BY MIA DA VINCI
@@ -418,7 +448,11 @@
       </div>
 
       <div class="gallery-item">
-        <img src="https://i.postimg.cc/857hZbkB/IMG-0079.jpg" class="gallery-image" alt="Abstract energy with golden eye">
+        <div class="gallery-frame">
+          <img src="https://i.postimg.cc/857hZbkB/IMG-0079.jpg" class="gallery-image" alt="Abstract energy with golden eye">
+          <!-- PASTE YOUR BORDER IMAGE URL HERE -->
+          <img src="" class="frame-border" alt="">
+        </div>
         <h3 class="gallery-title">BLACKHOLE </h3>
         <p class="gallery-description">
           A WAY TO DIE ... BY MIA DA VINCI
