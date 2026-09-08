@@ -332,6 +332,12 @@ body {
       color: #d1d5db;
       margin: 0;
     }
+    <script>
+  window.addEventListener('click', () => {
+    document.getElementById('bg-sound').play();
+  }, { once: true });
+</script>
+
   </style>
 </head>
   <body>
@@ -388,7 +394,8 @@ body {
       i bet u didnt know that
     </p>
   </div>
-<audio src="[https://assets.mixkit.co/active_storage/sfx/2290/2290-preview.mp3](https://assets.mixkit.co/active_storage/sfx/2290/2290-preview.mp3)" autoplay loop hidden></audio>
+<audio id="bg-sound" src="dunnndunn.wav" hidden></audio>
+
 
 </div>
 
