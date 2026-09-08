@@ -309,21 +309,33 @@
       </div>
     </div>
 
-    <!-- Audio (relative path) -->
-    <!-- Ensure dunnndunn.wav exists at the same directory as index.html, or replace with a hosted URL -->
-    <audio id="bg-sound" src="I'm batman.mp3" hidden></audio>
+    <!-- Audio - update the src path if your audio file is hosted elsewhere -->
+    <audio id="bg-sound" preload="auto">
+      <source src="I'm batman.mp3" type="audio/mpeg">
+    </audio>
   </div>
 
   <script>
-  const celestialToggle = document.querySelector('.secret-toggle');
-  const bgSound = document.getElementById('bg-sound');
+    const celestialToggle = document.querySelector('.secret-toggle');
+    const bgSound = document.getElementById('bg-sound');
 
-  celestialToggle.addEventListener('change', () => {
-    if (celestialToggle.checked) {
-      bgSound.currentTime = 0; // Starts from the beginning
-      bgSound.play().catch(e => console.log("Audio play blocked:", e));
-    }
-  });
+    celestialToggle.addEventListener('change', () => {
+      if (celestialToggle.checked) {
+        bgSound.currentTime = 0;
+        const playPromise = bgSound.play();
+        
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              console.log("Audio is playing!");
+            })
+            .catch(error => {
+              console.log("Audio play failed:", error);
+            });
+        }
+      }
+    });
+  </script>
 
 </body>
 </html>
