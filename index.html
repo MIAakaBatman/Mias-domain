@@ -315,24 +315,18 @@
   </div>
 
   <script>
-    // Play background audio on first user gesture (click/tap). Catch play promise errors.
-    function tryPlayAudio() {
-      const audio = document.getElementById('bg-sound');
-      if (!audio) return;
-      audio.play().catch(() => {
-        // Browsers may block autoplay — ignore and allow user to trigger manually if needed.
-      });
+    <script>
+  const celestialToggle = document.querySelector('.secret-toggle');
+  const bgSound = document.getElementById('bg-sound');
+
+  celestialToggle.addEventListener('change', () => {
+    if (celestialToggle.checked) {
+      bgSound.currentTime = 0; // Starts from the beginning
+      bgSound.play().catch(e => console.log("Audio play blocked:", e));
     }
+  });
+</script>
 
-    // Prefer first click or touchstart as the user gesture.
-    const onFirstGesture = () => {
-      tryPlayAudio();
-      window.removeEventListener('click', onFirstGesture);
-      window.removeEventListener('touchstart', onFirstGesture);
-    };
-
-    window.addEventListener('click', onFirstGesture, { once: true });
-    window.addEventListener('touchstart', onFirstGesture, { once: true });
   </script>
 </body>
 </html>
