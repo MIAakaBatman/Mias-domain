@@ -234,6 +234,81 @@
       transform: translateX(0) scale(1);
     }
 
+    /* Gallery Section */
+    .gallery-container {
+      width: 100%;
+      background-color: #f5f3f0;
+      padding: 80px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .gallery-heading {
+      font-family: "Party LET Plain", "Party LET", "Brush Script MT", cursive;
+      font-size: 3rem;
+      color: #2c2c2c;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .gallery-subtitle {
+      font-family: sans-serif;
+      font-size: 1.2rem;
+      color: #5a5a5a;
+      margin-bottom: 60px;
+      text-align: center;
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border: 3px solid #d4c5ba;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-title {
+      font-family: "Party LET Plain", "Party LET", "Brush Script MT", cursive;
+      font-size: 1.6rem;
+      color: #2c2c2c;
+      margin: 0 0 10px 0;
+    }
+
+    .gallery-description {
+      font-family: sans-serif;
+      font-size: 0.95rem;
+      color: #5a5a5a;
+      margin: 0;
+      line-height: 1.6;
+    }
+
     /* Typography within card */
     h1 {
       font-family: "Party LET Plain", "Party LET", "Brush Script MT", cursive;
@@ -255,6 +330,8 @@
       .intro-content { flex-direction: column-reverse; gap: 20px; }
       .profile-pic { width: 320px; }
       .card-container { width: 90%; height: auto; padding: 50px 30px; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-heading { font-size: 2.2rem; }
     }
   </style>
 </head>
@@ -313,6 +390,41 @@
     <audio id="bg-sound" preload="auto">
       <source src="I'm batman.mp3" type="audio/mpeg">
     </audio>
+  </div>
+
+  <!-- Gallery Section -->
+  <div class="gallery-container">
+    <h2 class="gallery-heading">MY ARTWORK</h2>
+    <p class="gallery-subtitle">
+      Jokes aside... I presume myself to be a very creative person, and for as long as I can remember—
+      since I was five to now at the ripe age of 17—I would like to share a few pieces I made.
+    </p>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://i.postimg.cc/c4S5YbpB/forest-water.jpg" class="gallery-image" alt="Forest and Water landscape">
+        <h3 class="gallery-title">Serene Reflections</h3>
+        <p class="gallery-description">
+          A peaceful forest landscape with water reflections. Soft greens and blues create a tranquil atmosphere, inviting viewers to escape into nature's quiet beauty.
+        </p>
+      </div>
+
+      <div class="gallery-item">
+        <img src="https://i.postimg.cc/3RKFwf6h/fantasy-castle.jpg" class="gallery-image" alt="Fantasy castle with ornate bridge">
+        <h3 class="gallery-title">Enchanted Realm</h3>
+        <p class="gallery-description">
+          An imaginative fantasy world featuring an ornate golden bridge and mystical castle. Mixed media textures bring this whimsical architecture to life with intricate detail.
+        </p>
+      </div>
+
+      <div class="gallery-item">
+        <img src="https://i.postimg.cc/xDPFVV7k/abstract-energy.jpg" class="gallery-image" alt="Abstract energy with golden eye">
+        <h3 class="gallery-title">Cosmic Energy</h3>
+        <p class="gallery-description">
+          A dynamic abstract piece bursting with swirling colors and magical sparkles. The striking golden eye at the center radiates power and wonder, captured in motion.
+        </p>
+      </div>
+    </div>
   </div>
 
   <script>
