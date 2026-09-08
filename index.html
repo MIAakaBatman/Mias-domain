@@ -2,25 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WELCOME TO MIA'S PLANET</title>
 
   <style>
+    /* Page base */
     body {
       background-color: #0b0d17;
       color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       min-height: 100vh;
       margin: 0;
       font-family: sans-serif;
       box-shadow: inset 0 0 90px rgba(180, 140, 255, 0.49);
+
+      /* Layout: natural vertical scroll */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
     }
 
+    /* Card frame */
     .card-container {
       position: relative;
-
-      /* 1. PUT YOUR PURPLE FRAME IMAGE LINK HERE */
       background-image: url('https://i.postimg.cc/nVKyPdh3/IMG-0836.png');
       background-size: 100% 100%;
       background-repeat: no-repeat;
@@ -44,280 +48,193 @@
       pointer-events: none;
     }
 
-    /* Smaller star dimensions & scattered positions */
-    .star-1 {
-      width: 80px;
-      top: 20px;
-      left: -110px;
-      transform: rotate(-12deg);
+    /* Star doodles */
+    .star-1 { width: 80px; top: 20px; left: -110px; transform: rotate(-12deg); }
+    .star-2 { width: 49px; bottom: 25px; left: -40px; transform: rotate(8deg); }
+    .star-3 { width: 72px; bottom: -45px; left: 40px; transform: rotate(-5deg); }
+    .star-4 { width: 55px; top: -35px; right: -50px; transform: rotate(15deg); }
+    .star-5 { width: 45px; top: 75px; right: -110px; transform: rotate(-10deg); }
+    .star-6 { width: 80px; bottom: -30px; right: -70px; transform: rotate(20deg); }
+    .star-7 { width: 58px; top: -40px; left: 10px; transform: rotate(5deg); }
+    .star-8 { width: 62px; top: 120px; left: -130px; transform: rotate(-18deg); }
+    .star-9 { width: 49px; bottom: -50px; right: 20px; transform: rotate(12deg); }
+    .star-10{ width: 50px; top: -20px; right: -120px; transform: rotate(-8deg); }
+
+    /* Hero / cloud / intro layout */
+    .hero-section {
+      min-height: 200vh;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      box-sizing: border-box;
     }
 
-    .star-2 {
-      width: 49px;
-      bottom: 25px;
-      left: -40px;
-      transform: rotate(8deg);
+    .cloud-section {
+      width: 100%;
+      position: relative;
+      line-height: 0;
     }
 
-    .star-3 {
-      width: 72px;
-      bottom: -45px;
-      left: 40px;
-      transform: rotate(-5deg);
+    .cloud-overlay {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
     }
 
-    .star-4 {
-      width: 55px;
-      top: -35px;
-      right: -50px;
-      transform: rotate(15deg);
+    .intro-container {
+      padding: 40px 20px 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
     }
 
-    .star-5 {
-      width: 45px;
-      top: 75px;
-      right: -110px;
-      transform: rotate(-10deg);
+    .intro-heading {
+      font-family: "Party LET Plain", "Party LET", "Brush Script MT", cursive;
+      font-size: 2.5rem;
+      color: #FFFC8F;
+      margin-bottom: 30px;
+
+      display: inline-block;
+      border: 2px solid #87ceeb;
+      background-color: #87ceeb;
+      border-radius: 15px;
+      padding: 8px 24px;
+      box-shadow: 0 0 12px rgba(135, 206, 235, 0.4);
     }
 
-    .star-6 {
-      width: 80px;
-      bottom: -30px;
-      right: -70px;
-      transform: rotate(20deg);
+    .intro-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto;
     }
-/* Change sizes here by adjusting the 'width' numbers */
-.star-7  { width: 58px; top: -40px; left: 10px; transform: rotate(5deg); }
-.star-8  { width: 62px; top: 120px; left: -130px; transform: rotate(-18deg); }
-.star-9  { width: 49px; bottom: -50px; right: 20px; transform: rotate(12deg); }
-.star-10 { width: 50px; top: -20px; right: -120px; transform: rotate(-8deg); }
-/* Reset body layout for natural vertical scrolling */
-body {
-  min-height: 100vh;
-  margin: 0;
-  display: flex;
-  flex-direction: column; /* Stacks sections vertically */
-  align-items: center;
-  overflow-x: hidden;
-}
 
-/* Hero section containing your card frame and scattered stars */
-.hero-section {
-  min-height: 200vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items:  flex-start ;
-  box-sizing: border-box;
-}
+    .text-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex: 1;
+      text-align: left;
+    }
 
-/* Cloud section sitting directly below the hero section */
-.cloud-section {
-  width: 100%;
-  position: relative;
-  line-height: 0; /* Prevents tiny whitespace gaps under images */
-}
+    .intro-text {
+      font-family: sans-serif;
+      color: #FFE75E;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin: 0;
+    }
 
-.cloud-overlay {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-/* Layout container for the section below clouds */
-.intro-container {
-  padding: 40px 20px 150px; /* INCREASE '100px' TO MAKE IT SCROLL FURTHER */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    .profile-pic {
+      width: 500px;
+      height: auto;
+    }
 
-.intro-heading {
-  font-family: "Party LET Plain", "Party LET", "Brush Script MT", cursive;
-  font-size: 2.5rem;
-  color: #ffffff;
-  margin-bottom: 30px;
-}
+    /* Intro background starfield (behind content) */
+    .intro-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.9), rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 230px 10px, #ffffff, rgba(0,0,0,0));
+      background-repeat: repeat;
+      background-size: 250px 250px;
+      animation: starTwinkle 3s ease-in-out infinite alternate;
+    }
 
-/* Content box pairing text on left and your photo on right */
-.intro-content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  width: 90%;
-  max-width: 900px;
-  margin: 0 auto;
-}
+    @keyframes starTwinkle {
+      0% { opacity: 0.2; }
+      100% { opacity: 0.8; }
+    }
 
-/* Keeps all text stacked neatly together on the left */
-.text-block {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex: 1;
-  text-align: left;
-}
+    /* Aura glow for profile PNGs */
+    .aura-glow {
+      animation: dbzAura 0.8s ease-in-out infinite alternate;
+      will-change: filter;
+    }
 
-.intro-text {
-  font-family: sans-serif;
-  color: #FFE75E;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin: 0;
-}
+    @keyframes dbzAura {
+      0% {
+        filter:
+          drop-shadow(0 0 6px rgba(135, 206, 235, 0.8))
+          drop-shadow(0 0 15px rgba(180, 140, 255, 0.6))
+          drop-shadow(0 0 25px rgba(135, 206, 235, 0.4));
+        transform: scale(1);
+      }
+      100% {
+        filter:
+          drop-shadow(0 0 12px rgba(135, 206, 235, 1))
+          drop-shadow(0 0 28px rgba(180, 140, 255, 0.9))
+          drop-shadow(0 0 45px rgba(255, 255, 255, 0.7));
+        transform: scale(1.015);
+      }
+    }
 
+    /* Interactive reveal line */
+    .secret-container {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
 
+    .secret-toggle {
+      display: none;
+    }
 
-/* Your standing photo styling */
-.profile-pic {
-  width: 500px; /* Adjust image display width */
-  height: auto;
-}
-.intro-heading {
-  font-family: "Party LET Plain", "Party LET", "Brush Script MT", cursive;
-  font-size: 2.5rem;
-  color: #FFFC8F;
-  margin-bottom: 30px;
+    .celestial-prop {
+      font-size: 7rem;
+      transition: transform 0.5s ease, filter 0.5s ease;
+      user-select: none;
+    }
 
-  /* Light Blue Rounded Border */
-  display: inline-block;                 /* Wraps border tightly around text */
-  border: 2px solid #87ceeb; /* Light blue border color */
-  background-color: #87ceeb;
-  border-radius: 15px;                   /* Curved corners */
-  padding: 8px 24px;                     /* Breathing room inside border */
-  box-shadow: 0 0 12px rgba(135, 206, 235, 0.4); /* Optional subtle blue glow */
-}
-.intro-container {
-  padding: 40px 20px 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
+    .celestial-prop::before {
+      content: "☀️";
+      filter: drop-shadow(0 0 8px #ffb703);
+    }
 
-.intro-container {
-  padding: 40px 20px 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 1; /* Keeps text and images sitting above the background */
-}
+    .secret-fact {
+      opacity: 0;
+      transform: translateX(-15px) scale(0.9);
+      font-size: 1.8rem;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      color: #a0c4ff;
+      font-weight: bold;
+    }
 
-/* Twinkling star layer positioned strictly behind the content */
-.intro-container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Pushes stars behind text */
+    /* Reveal states */
+    .secret-toggle:checked + .celestial-prop::before {
+      content: "🌙";
+      filter: drop-shadow(0 0 12px #e0aaff);
+    }
 
-  /* Pure CSS starfield pattern */
-  background-image: 
-    radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 90px 40px, #ffffff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.9), rgba(0,0,0,0)),
-    radial-gradient(1.5px 1.5px at 230px 10px, #ffffff, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 250px 250px;
+    .secret-toggle:checked + .celestial-prop {
+      transform: rotate(360deg) scale(1.2);
+    }
 
-  /* Only this background layer twinkles now */
-  animation: starTwinkle 3s ease-in-out infinite alternate;
-}
+    .secret-toggle:checked ~ .secret-fact {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
 
-/* Keyframes target only the background star opacity */
-@keyframes starTwinkle {
-  0% {
-    opacity: 0.2;
-  }
-  100% {
-    opacity: 0.8;
-  }
-}
-/* Animated DBZ / Cosmic Aura Effect for transparent PNGs */
-.aura-glow {
-  animation: dbzAura 0.8s ease-in-out infinite alternate;
-  will-change: filter;
-}
-
-@keyframes dbzAura {
-  0% {
-    filter: 
-      drop-shadow(0 0 6px rgba(135, 206, 235, 0.8))
-      drop-shadow(0 0 15px rgba(180, 140, 255, 0.6))
-      drop-shadow(0 0 25px rgba(135, 206, 235, 0.4));
-    transform: scale(1);
-  }
-  100% {
-    filter: 
-      drop-shadow(0 0 12px rgba(135, 206, 235, 1))
-      drop-shadow(0 0 28px rgba(180, 140, 255, 0.9))
-      drop-shadow(0 0 45px rgba(255, 255, 255, 0.7));
-    transform: scale(1.015); /* Subtle energy flare expansion */
-  }
-}
-/* Container for the interactive reveal line */
-.secret-container {
-  margin-top: 15px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-}
-
-/* Hide the raw checkbox input */
-.secret-toggle {
-  display: none;
-}
-
-/* The celestial prop icon */
-.celestial-prop {
-  font-size: 7rem;
-  transition: transform 0.5s ease, filter 0.5s ease;
-  user-select: none;
-}
-
-/* Default state: Sun */
-.celestial-prop::before {
-  content: "☀️";
-  filter: drop-shadow(0 0 8px #ffb703);
-}
-
-/* Hidden secret text state */
-.secret-fact {
-  opacity: 0;
-  transform: translateX(-15px) scale(0.9);
-  font-size: 1.8rem;
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  color: #a0c4ff;
-  font-weight: bold;
-}
-
-/* --- REVEAL TRIGGER (ON CLICK / TAP) --- */
-
-/* 1. Turn Sun into glowing Moon & rotate */
-.secret-toggle:checked + .celestial-prop::before {
-  content: "🌙";
-  filter: drop-shadow(0 0 12px #e0aaff);
-}
-
-.secret-toggle:checked + .celestial-prop {
-  transform: rotate(360deg) scale(1.2);
-}
-
-/* 2. Pop the Batman fact out of nowhere! */
-.secret-toggle:checked ~ .secret-fact {
-  opacity: 1;
-  transform: translateX(0) scale(1);
-}
-
-
-
+    /* Typography within card */
     h1 {
       font-family: "Party LET Plain", "Party LET", "Brush Script MT", cursive;
       font-size: 2.2rem;
@@ -332,72 +249,90 @@ body {
       color: #d1d5db;
       margin: 0;
     }
-    <script>
-  window.addEventListener('click', () => {
-    document.getElementById('bg-sound').play();
-  }, { once: true });
-</script>
 
+    /* Small responsive tweaks */
+    @media (max-width: 900px) {
+      .intro-content { flex-direction: column-reverse; gap: 20px; }
+      .profile-pic { width: 320px; }
+      .card-container { width: 90%; height: auto; padding: 50px 30px; }
+    }
   </style>
 </head>
-  <body>
 
-  <div class="card-container">
-    <!-- 2. STAR DOODLES (IMG-0843.png) -->
-    <img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-1" alt="star">
-    <img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-2" alt="star">
-    <img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-3" alt="star">
-    <img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-4" alt="star">
-    <img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-5" alt="star">
-    <img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-6" alt="star">
-<img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-7" alt="star">
-<img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-8" alt="star">
-<img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-9" alt="star">
-<img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-10" alt="star">
+<body>
+
+  <div class="card-container" role="region" aria-label="Welcome card">
+    <!-- STAR DOODLES -->
+    <img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-1" alt="" aria-hidden="true">
+    <img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-2" alt="" aria-hidden="true">
+    <img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-3" alt="" aria-hidden="true">
+    <img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-4" alt="" aria-hidden="true">
+    <img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-5" alt="" aria-hidden="true">
+    <img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-6" alt="" aria-hidden="true">
+    <img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-7" alt="" aria-hidden="true">
+    <img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-8" alt="" aria-hidden="true">
+    <img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-9" alt="" aria-hidden="true">
+    <img src="https://i.postimg.cc/7ZV7FX61/IMG-0843.png" class="doodle star-10" alt="" aria-hidden="true">
 
     <h1>WELCOME TO MIA'S PLANET</h1>
     <p>~prepare to be starstruck~</p>
   </div>
 
-
-
-
-  <!-- Second Viewport: Full-Width Clouds on Scroll -->
-  <div class="cloud-section">
-    <img src="https://i.postimg.cc/mD2jDw8Z/IMG-0854.png" class="cloud-overlay" alt="Clouds cover">
+  <!-- Full-width clouds -->
+  <div class="cloud-section" aria-hidden="true">
+    <img src="https://i.postimg.cc/mD2jDw8Z/IMG-0854.png" class="cloud-overlay" alt="Clouds overlay">
   </div>
 
-  <!-- Introduction Layout -->
+  <!-- Introduction -->
   <div class="intro-container">
     <h2 class="intro-heading">INTRODUCTION</h2>
-<div class="intro-content">
 
-  <!-- 1. Character Photo on the left -->
-  <img src="https://i.postimg.cc/qvVSbsDD/IMG-0845.png" class="profile-pic aura-glow" alt="Mia">
+    <div class="intro-content">
+      <img src="https://i.postimg.cc/qvVSbsDD/IMG-0845.png" class="profile-pic aura-glow" alt="Mia">
 
-  <!-- 2. Text block on the right -->
-  <div class="text-block">
-    <p class="intro-text">
-      Welcome! Woah ....<br>
-      you made it this far ....<br><br>
-      well now that u are here ... here are a few facts abt me ...<br>one of em is ...
-    </p>
+      <div class="text-block">
+        <p class="intro-text">
+          Welcome! Woah ....<br>
+          you made it this far ....<br><br>
+          well now that u are here ... here are a few facts abt me ...<br>one of em is ...
+        </p>
 
-    <!-- Interactive Sun/Moon Batman Reveal -->
-    <label class="secret-container">
-      <input type="checkbox" class="secret-toggle">
-      <span class="celestial-prop"></span>
-      <span class="secret-fact">IM BATMAN!!! 🦇</span>
-    </label>
+        <label class="secret-container" title="Click to reveal the secret">
+          <input type="checkbox" class="secret-toggle" aria-hidden="true">
+          <span class="celestial-prop" aria-hidden="true"></span>
+          <span class="secret-fact" aria-live="polite">IM BATMAN!!! 🦇</span>
+        </label>
 
-    <p class="intro-text" style="margin-top: 10px;">
-      i bet u didnt know that
-    </p>
+        <p class="intro-text" style="margin-top: 10px;">
+          i bet u didnt know that
+        </p>
+      </div>
+    </div>
+
+    <!-- Audio (relative path) -->
+    <!-- Ensure dunnndunn.wav exists at the same directory as index.html, or replace with a hosted URL -->
+    <audio id="bg-sound" src="dunnndunn.wav" hidden></audio>
   </div>
-<audio id="bg-sound" src="dunnndunn.wav" hidden></audio>
 
+  <script>
+    // Play background audio on first user gesture (click/tap). Catch play promise errors.
+    function tryPlayAudio() {
+      const audio = document.getElementById('bg-sound');
+      if (!audio) return;
+      audio.play().catch(() => {
+        // Browsers may block autoplay — ignore and allow user to trigger manually if needed.
+      });
+    }
 
-</div>
+    // Prefer first click or touchstart as the user gesture.
+    const onFirstGesture = () => {
+      tryPlayAudio();
+      window.removeEventListener('click', onFirstGesture);
+      window.removeEventListener('touchstart', onFirstGesture);
+    };
 
-    
-
+    window.addEventListener('click', onFirstGesture, { once: true });
+    window.addEventListener('touchstart', onFirstGesture, { once: true });
+  </script>
+</body>
+</html>
